@@ -9,6 +9,7 @@ import me.leonorader.domain.Hotel;
 import me.leonorader.domain.RoomInput;
 import me.leonorader.websocket.HotelHandler;
 import me.leonorader.websocket.SessionRegistry;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/hotel")
 @RequiredArgsConstructor
 public class HotelRestController {
