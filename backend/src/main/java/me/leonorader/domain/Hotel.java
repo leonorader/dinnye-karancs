@@ -33,10 +33,10 @@ public class Hotel {
         // TODO set entresol
     }
 
-    public void setHotelMatrix(String[][] data) {
+    public void setHotelMatrix(List<List<String>> data) {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 8; j++) {
-                setRoomColour(i, j, data[i][j]);
+                setRoomColour(i, j, data.get(i).get(j));
             }
         }
     }

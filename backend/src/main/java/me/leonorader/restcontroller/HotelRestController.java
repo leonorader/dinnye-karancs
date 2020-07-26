@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.RequiredArgsConstructor;
 import me.leonorader.domain.ColourInput;
 import me.leonorader.domain.Hotel;
+import me.leonorader.domain.MatrixInput;
 import me.leonorader.domain.RoomInput;
 import me.leonorader.websocket.HotelHandler;
 import me.leonorader.websocket.SessionRegistry;
@@ -36,14 +37,14 @@ public class HotelRestController {
     }
 
     @PutMapping("/colour")
-    public void setColour(@RequestBody ColourInput colour) throws IOException {
-        hotelHandler.getHotel().setHotelColour(colour.getColour());
+    public void setColour(@RequestBody ColourInput colourInput) throws IOException {
+        hotelHandler.getHotel().setHotelColour(colourInput.getColour());
         sendHotel();
     }
 
     @PutMapping("/matrix")
-    public void setMatrix(@RequestBody String[][] data) throws IOException {
-        hotelHandler.getHotel().setHotelMatrix(data);
+    public void setMatrix(@RequestBody MatrixInput matrixInput) throws IOException {
+        hotelHandler.getHotel().setHotelMatrix(matrixInput.getData());
         sendHotel();
     }
 
