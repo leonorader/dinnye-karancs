@@ -8,8 +8,8 @@ export const moduleWebSocket = {
 
       const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
       // eslint-disable-next-line
-      // const connectionUrl = process.env.NODE_ENV === 'development' ? `${protocol}//localhost:8098` : `${protocol}//${location.hostname}:${location.port}`
-      const connectionUrl = 'wss://dinnye-karancs.herokuapp.com/'
+      const connectionUrl = process.env.NODE_ENV === 'development' ? `${protocol}//localhost:8098` : `${protocol}//${location.hostname}:${location.port}`
+      // const connectionUrl = 'wss://dinnye-karancs.herokuapp.com'
 
       let ws = new WebSocket(`${connectionUrl}/socket/hotel`)
       ws.onopen = function () {

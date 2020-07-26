@@ -1,6 +1,6 @@
 <template>
   <main>
-    <canvas id="canvas" height="200" width="100"></canvas>
+    <canvas id="canvas"></canvas>
     <!--<p>{{hotel}}</p>-->
   </main>
 </template>
@@ -13,9 +13,9 @@
         canvas: null,
         context: null,
 
-        unit: 8,
-        width: 2 * 8,
-        height: 8
+        unit: 16,
+        width: 2 * 16,
+        height: 16
       }
     },
     computed: {
@@ -40,8 +40,8 @@
     },
     mounted() {
       this.canvas = document.getElementById('canvas')
-      this.canvas.width = 200
-      this.canvas.height = 125
+      this.canvas.width = this.unit * 3 * 8 + 16
+      this.canvas.height = this.unit * 2 * 8 + 16
 
       this.context = this.canvas.getContext('2d')
       // this.context.fillStyle = '#fffff0'
