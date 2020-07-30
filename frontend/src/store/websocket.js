@@ -14,6 +14,7 @@ export const moduleWebSocket = {
       let ws = new WebSocket(`${connectionUrl}/socket/hotel`)
       ws.onopen = function () {
         console.log('socket opened - registered')
+        context.dispatch('sendPing')
       }
       ws.onerror = function () {
         console.log('error with socket')
@@ -34,6 +35,10 @@ export const moduleWebSocket = {
         default:
           break
       }
+    },
+    sendPing(context) {
+      context.webSocket.send('ping')
+      setTimeout(context.dispatch('sendPing'), 800)
     }
   }
 }

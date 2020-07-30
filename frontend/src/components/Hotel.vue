@@ -14,29 +14,29 @@
       </div>
 
       <div v-for="i in 7" class="floor">
-        <div v-for="j in 8" class="room" :style="{'background-color': hotel[i][j].data}" :ref="'room-' + (i-1) + '-' + (j-1)"></div>
+        <div v-for="j in 8" class="room" :style="{'background-color': hotel.rooms[i-1][j-1].data}" :ref="'room-' + (i-1) + '-' + (j-1)"></div>
       </div>
     </div>
 
     <div id="entresol">
       <div id="base">
         <div class="tik"></div>
-        <div class="tok" ref="window-1">
+        <div class="tok" ref="window-1" :style="{'background-color': hotel.entresol[0].data}">
           <div class="tok-up"></div>
           <div class="tok-down"></div>
         </div>
         <div class="tik"></div>
-        <div class="tok" ref="window-2">
+        <div class="tok" ref="window-2" :style="{'background-color': hotel.entresol[1].data}">
           <div class="tok-up"></div>
           <div class="tok-down"></div>
         </div>
         <div class="tik"></div>
-        <div class="tok" ref="window-3">
+        <div class="tok" ref="window-3" :style="{'background-color': hotel.entresol[2].data}">
           <div class="tok-up"></div>
           <div class="tok-down"></div>
         </div>
         <div class="tik"></div>
-        <div class="tok" ref="window-4">
+        <div class="tok" ref="window-4" :style="{'background-color': hotel.entresol[3].data}">
           <div class="tok-up"></div>
           <div class="tok-down"></div>
         </div>

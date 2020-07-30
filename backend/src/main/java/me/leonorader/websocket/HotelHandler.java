@@ -2,16 +2,17 @@ package me.leonorader.websocket;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import me.leonorader.domain.Hotel;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
 
-@Slf4j
+@Log
 @Component
 @RequiredArgsConstructor
 public class HotelHandler extends TextWebSocketHandler {
@@ -28,7 +29,7 @@ public class HotelHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         registerSession(session);
-        log.info("registered new session: {}", session.getId());
+        log.info("registered new session: " + session.getId());
     }
 
     private void registerSession(WebSocketSession session) throws IOException {
@@ -38,8 +39,15 @@ public class HotelHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws IOException {
         registry.removeBySessionId(session.getId());
-        log.info("session closed: {}", session.getId());
+        log.info("session closed: " + session.getId());
 
+    }
+
+    @Override
+    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+        String clientMessage = message.getPayload();
+        log.info(clientMessage);
+        session.sendMessage(new TextMessage("pong"));
     }
 
 }

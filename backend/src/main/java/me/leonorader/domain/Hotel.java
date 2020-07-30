@@ -11,7 +11,8 @@ import java.util.List;
 public class Hotel {
 
     private List<List<Room>> rooms;
-    // entresol
+
+    private List<Room> entresol;
 
     public void init() {
         rooms = new ArrayList<>();
@@ -43,6 +44,22 @@ public class Hotel {
 
     public void setRoomColour(int floor, int room, String colour) {
         rooms.get(floor).get(room).setData(colour);
+    }
+
+    public void setEntresolColour(String colour) {
+        for (int i = 0; i < 4; i++) {
+            setEntresolWindowColour(i, colour);
+        }
+    }
+
+    public void setEntresolWindowColour(int window, String colour) {
+        entresol.get(window).setData(colour);
+        entresol.get(window).setType(DataType.COLOUR);
+    }
+
+    public void setEntresolWindowVideo(int window, String link) {
+        entresol.get(window).setData(link);
+        entresol.get(window).setType(DataType.VIDEO);
     }
 
 }

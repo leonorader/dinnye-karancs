@@ -2,6 +2,7 @@ package me.leonorader.domain;
 
 public enum DataType {
 
-    COLOUR;
+    COLOUR,
+    VIDEO;
 
 }

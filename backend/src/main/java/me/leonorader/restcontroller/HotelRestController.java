@@ -8,6 +8,7 @@ import me.leonorader.domain.ColourInput;
 import me.leonorader.domain.Hotel;
 import me.leonorader.domain.MatrixInput;
 import me.leonorader.domain.RoomInput;
+import me.leonorader.domain.WindowInput;
 import me.leonorader.websocket.HotelHandler;
 import me.leonorader.websocket.SessionRegistry;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,6 +52,18 @@ public class HotelRestController {
     @PutMapping("/rooms")
     public void setRoom(@RequestBody RoomInput roomInput) throws IOException {
         hotelHandler.getHotel().setRoomColour(roomInput.getFloor(), roomInput.getRoom(), roomInput.getColour());
+        sendHotel();
+    }
+
+    @PutMapping("/entresol/colour")
+    public void setEntresolColour(@RequestBody ColourInput colourInput) throws IOException {
+        hotelHandler.getHotel().setEntresolColour(colourInput.getColour());
+        sendHotel();
+    }
+
+    @PutMapping("/entresol/video")
+    public void setEntresolWindowVideo(@RequestBody WindowInput windowInput) throws IOException {
+        hotelHandler.getHotel().setEntresolWindowVideo(windowInput.getWindow(), windowInput.getData());
         sendHotel();
     }
 
