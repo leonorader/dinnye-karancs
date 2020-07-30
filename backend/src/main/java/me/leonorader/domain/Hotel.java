@@ -20,12 +20,12 @@ public class Hotel {
         for (int i = 0; i < 7; i++) {
             List<Room> floor = new ArrayList<>();
             for (int j = 0; j < 8; j++) {
-                floor.add(new Room("#fff", DataType.COLOUR));
+                floor.add(new Room("#000", DataType.COLOUR));
             }
             rooms.add(floor);
         }
         for (int i = 0; i < 4; i++) {
-            entresol.add(new Room("#fff", DataType.COLOUR));
+            entresol.add(new Room("#000", DataType.COLOUR));
         }
     }
 

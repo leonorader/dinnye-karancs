@@ -16,7 +16,6 @@ export default new Vuex.Store({
       state.hotel = payload
     }
   },
-  actions: {},
   getters: {
     hotel: state => state.hotel
   }

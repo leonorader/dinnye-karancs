@@ -1,5 +1,8 @@
 package me.leonorader.websocket;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -22,6 +25,8 @@ public class HotelHandler extends TextWebSocketHandler {
     @Getter
     private final Hotel hotel;
 
+    private final ObjectMapper objectMapper;
+
     public void init() {
         hotel.init();
     }
@@ -30,6 +35,14 @@ public class HotelHandler extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         registerSession(session);
         log.info("registered new session: " + session.getId());
+
+        String hotelData = objectMapper.writeValueAsString(hotel);
+
+        ObjectNode data = JsonNodeFactory.instance.objectNode();
+        data.put("id", "hotel");
+        data.put("data", hotelData);
+        registry.broadcast(data);
+
     }
 
     private void registerSession(WebSocketSession session) throws IOException {

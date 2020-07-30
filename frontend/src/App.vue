@@ -20,6 +20,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 html, body, #app {
@@ -49,6 +53,11 @@ body {
 #karancs {
   width: 6.4cm;
   height: 11.5cm;
+  flex-direction: column;
+}
+
+main#karancs > div {
+  width: 100%;
 }
 
 #matrix {
@@ -56,7 +65,7 @@ body {
 }
 
 .floor, .roof {
-  background: white;
+  background: #222;
   width: 100%;
   border: 1px solid black;
   margin: -1px 0;
@@ -96,7 +105,7 @@ body {
   border: 1px solid black;
   margin: -1px 0;
   height: 100%;
-  background: white;
+  background: #222;
   display: flex;
 }
 
@@ -105,7 +114,7 @@ body {
   width: 4%;
   margin: -1px 1%;
   border: 1px solid black;
-  background: white;
+  background: #222;
 }
 
 .tik:first-child {
@@ -119,7 +128,7 @@ body {
   height: 100%;
   width: 20%;
   border: 1px solid black;
-  background: white;
+  background: #222;
   margin: -1px 1%;
 
 }
@@ -150,7 +159,7 @@ body {
   width: 100%;
   border: 1px solid black;
   height: 30%;
-  background: white;
+  background: #222;
   position: relative
 }
 
@@ -158,7 +167,7 @@ body {
   width: 97%;
   border: 1px solid black;
   height: 70%;
-  background: white;
+  background: #222;
   margin: -1px 0;
   display: flex;
   justify-content: space-around;
