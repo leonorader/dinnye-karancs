@@ -47,7 +47,7 @@ public class HotelHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String clientMessage = message.getPayload();
         log.info(clientMessage);
-        session.sendMessage(new TextMessage("pong"));
+        session.sendMessage(new TextMessage("{\"message\": \"pong\"}"));
     }
 
 }
