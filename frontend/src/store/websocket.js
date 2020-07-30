@@ -37,7 +37,7 @@ export const moduleWebSocket = {
       }
     },
     sendPing(context) {
-      context.webSocket.send('ping')
+      context.state.webSocket.send('ping')
       setTimeout(context.dispatch('sendPing'), 800)
     }
   }

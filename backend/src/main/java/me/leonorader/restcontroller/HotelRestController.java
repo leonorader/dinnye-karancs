@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.RequiredArgsConstructor;
 import me.leonorader.domain.ColourInput;
+import me.leonorader.domain.DataType;
+import me.leonorader.domain.EntresolInput;
 import me.leonorader.domain.Hotel;
 import me.leonorader.domain.MatrixInput;
 import me.leonorader.domain.RoomInput;
@@ -55,15 +57,21 @@ public class HotelRestController {
         sendHotel();
     }
 
-    @PutMapping("/entresol/colour")
-    public void setEntresolColour(@RequestBody ColourInput colourInput) throws IOException {
-        hotelHandler.getHotel().setEntresolColour(colourInput.getColour());
+    @PutMapping("/entresol")
+    public void setEntresolColour(@RequestBody EntresolInput entresolInput) throws IOException {
+        for(int i = 0; i < 4; i++) {
+            hotelHandler.getHotel().setEntresolWindowColour(i, entresolInput.getData().get(i));
+        }
         sendHotel();
     }
 
-    @PutMapping("/entresol/video")
-    public void setEntresolWindowVideo(@RequestBody WindowInput windowInput) throws IOException {
-        hotelHandler.getHotel().setEntresolWindowVideo(windowInput.getWindow(), windowInput.getData());
+    @PutMapping("/entresol/window")
+    public void setEntresolWindowColour(@RequestBody WindowInput windowInput) throws IOException {
+        if (windowInput.getType() == DataType.COLOUR) {
+            hotelHandler.getHotel().setEntresolWindowColour(windowInput.getWindow(), windowInput.getData());
+        } else {
+            hotelHandler.getHotel().setEntresolWindowVideo(windowInput.getWindow(), windowInput.getData());
+        }
         sendHotel();
     }
 

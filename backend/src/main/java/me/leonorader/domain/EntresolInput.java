@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WindowInput {
+public class EntresolInput {
 
-    private Integer window;
-
-    private String data;
-
-    protected DataType type;
+    private List<String> data;
 
 }

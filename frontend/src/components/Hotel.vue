@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div id="entresol">
+    <div id="entresol" v-if="hotel">
       <div id="base">
         <div class="tik"></div>
         <div class="tok" ref="window-1" :style="{'background-color': hotel.entresol[0].data}">
