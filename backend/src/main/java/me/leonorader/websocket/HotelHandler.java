@@ -40,6 +40,7 @@ public class HotelHandler extends TextWebSocketHandler {
 
         ObjectNode data = JsonNodeFactory.instance.objectNode();
         data.put("id", "hotel");
+
         data.put("data", hotelData);
         registry.broadcast(data);
 
